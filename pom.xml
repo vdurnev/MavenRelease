@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example.mavenrelease</groupId>
+    <artifactId>mavenrelease</artifactId>
+    <version>${revision}${sha1}${changelist}</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>module1</module>
+        <module>module2</module>
+        <module>module3</module>
+    </modules>
+
+    <scm>
+        <connection>scm:git:git@github.com:vdurnev/maverelease.git</connection>
+        <developerConnection>scm:git:git@github.com:vdurnev/maverelease.git</developerConnection>
+        <url>http://github.com/vdurnev/maverelease.git</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>absolute directory</id>
+                <url>file://C:/Users/vdur/IdeaProjects/repo</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <revision>1.1.0</revision>
+        <changelist>-SNAPSHOT</changelist>
+        <sha1/>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.outbrain.swinfra</groupId>
+                <artifactId>ci-friendly-flatten-maven-plugin</artifactId>
+                <version>1.0.9</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>clean</goal>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
